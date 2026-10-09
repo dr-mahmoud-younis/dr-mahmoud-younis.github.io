@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Clinic Post Writer</title><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{font:16px system-ui;max-width:760px;margin:20px auto;padding:0 16px}input,textarea,select{width:100%;padding:8px;margin:4px 0 12px;font:inherit;box-sizing:border-box}textarea{min-height:140px}button{padding:10px 18px;font:inherit;cursor:pointer}.ar{direction:rtl;font-size:18px}li{margin:6px 0}#st{font-weight:600;margin-top:12px}</style></head><body>
+<h2>Clinic Post Writer</h2>
+<label>GitHub repo (username/repo)</label><input id="repo" placeholder="dr-mahmoud-younis/clinic">
+<label>Access token (saved only in this browser)</label><input id="token" type="password">
+<hr><label>Type</label><select id="type"><option value="news">News</option><option value="articles">Article</option></select>
+<label>Title (English)</label><input id="te"><label>Title (Arabic)</label><input id="ta" class="ar">
+<label>Text (English) - blank line = new paragraph</label><textarea id="xe"></textarea>
+<label>Text (Arabic)</label><textarea id="xa" class="ar"></textarea>
+<button id="pub">Publish</button> <button id="ref">Show / delete posts</button><div id="st"></div><ul id="ls"></ul>
+<script>
+var $=function(i){return document.getElementById(i)};['repo','token'].forEach(function(k){$(k).value=localStorage.getItem(k)||''});
+function api(){return 'https://api.github.com/repos/'+$('repo').value.trim()+'/contents/posts.json'}
+function H(){return{Authorization:'Bearer '+$('token').value.trim(),Accept:'application/vnd.github+json'}}
+function st(m){$('st').textContent=m}
+async function load(){localStorage.setItem('repo',$('repo').value);localStorage.setItem('token',$('token').value);
+var r=await fetch(api(),{headers:H()});if(!r.ok)throw new Error('Cannot read posts.json ('+r.status+'). Check repo name and token.');
+var j=await r.json();return{d:JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(j.content.replace(/\n/g,'')),function(c){return c.charCodeAt(0)}))),sha:j.sha}}
+async function save(d,sha,msg){var by=new TextEncoder().encode(JSON.stringify(d,null,1)),s='';by.forEach(function(b){s+=String.fromCharCode(b)});
+var r=await fetch(api(),{method:'PUT',headers:H(),body:JSON.stringify({message:msg,content:btoa(s),sha:sha})});if(!r.ok)throw new Error('Save failed ('+r.status+'). Token needs Contents: Read and write.')}
+$('pub').onclick=async function(){try{st('Publishing...');var o=await load(),t=$('type').value,n=new Date(),f={day:'numeric',month:'short',year:'numeric'};
+var p={title_ar:$('ta').value,title_en:$('te').value,text_ar:$('xa').value,text_en:$('xe').value};
+if(!p.title_en&&!p.title_ar)throw new Error('Write a title first.');
+if(t=='news'){p.date_en=n.toLocaleDateString('en-GB',f);p.date_ar=n.toLocaleDateString('ar-EG',f)}
+o.d[t].unshift(p);await save(o.d,o.sha,'Add '+t);st('Published. Live in 1-2 minutes.');['te','ta','xe','xa'].forEach(function(i){$(i).value=''});list()}catch(e){st(e.message)}};
+async function list(){try{var o=await load();$('ls').innerHTML='';['news','articles'].forEach(function(t){o.d[t].forEach(function(p,i){var li=document.createElement('li'),b=document.createElement('button');b.textContent='Delete';b.onclick=async function(){if(!confirm('Delete this post?'))return;var q=await load();q.d[t].splice(i,1);await save(q.d,q.sha,'Delete '+t);list()};li.textContent=t+': '+(p.title_en||p.title_ar)+' ';li.append(b);$('ls').append(li)})});st('')}catch(e){st(e.message)}}
+$('ref').onclick=list;
+</script></body></html>

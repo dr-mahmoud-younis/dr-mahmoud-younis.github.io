@@ -1,0 +1,46 @@
+{
+ "news": [
+  {
+   "date_ar": "٩ أكتوبر ٢٠٢٦",
+   "date_en": "9 Oct 2026",
+   "title_ar": "إطلاق الموقع الإلكتروني للعيادة",
+   "title_en": "Clinic website launched",
+   "text_ar": "يمكنك الآن الاطلاع على الخدمات والمقالات الطبية وأرقام الحجز من مكان واحد، بالعربية والإنجليزية.",
+   "text_en": "Services, medical articles and booking numbers are now in one place, in Arabic and English."
+  },
+  {
+   "date_ar": "للمرضى",
+   "date_en": "Patients",
+   "title_ar": "الإعادة خلال شهر",
+   "title_en": "Follow-up within one month",
+   "text_ar": "للحجز اتصل على أحد أرقام العيادة، وأحضر معك التحاليل والأشعة والأدوية الحالية.",
+   "text_en": "To book, call one of the clinic numbers and bring your recent tests, scans and current medicines."
+  }
+ ],
+ "articles": [
+  {
+   "title_ar": "متى تحتاج إلى تحليل الغدة الدرقية؟",
+   "title_en": "When should you test your thyroid?",
+   "text_ar": "اطلب التحليل (TSH) إذا ظهر تعب مستمر، زيادة أو نقص غير مبرر في الوزن، حساسية للبرد أو الحرارة، خفقان، تساقط الشعر، اضطراب الدورة أو تأخر الحمل، أو وجود تاريخ عائلي لأمراض الغدة. التحليل بسيط، ويُعاد بعد 6–8 أسابيع من أي تعديل في جرعة العلاج.",
+   "text_en": "Test TSH if you have persistent fatigue, unexplained weight change, cold or heat intolerance, palpitations, hair loss, menstrual irregularity or difficulty conceiving, or a family history of thyroid disease. The test is simple, and is repeated 6–8 weeks after any dose adjustment."
+  },
+  {
+   "title_ar": "السكر التراكمي: ما الرقم المناسب لك؟",
+   "title_en": "HbA1c: what is the right target for you?",
+   "text_ar": "يعكس السكر التراكمي متوسط السكر خلال نحو 3 أشهر. الهدف لمعظم البالغين أقل من 7%، ويُخفف أو يُشدد حسب العمر والأمراض المصاحبة وخطر الهبوط. الأهم من الرقم وحده: ضغط الدم، الدهون، وفحص العين والكلى والقدم سنويًا.",
+   "text_en": "HbA1c reflects average glucose over about 3 months. The usual target for most adults is below 7%, individualised by age, comorbidities and hypoglycaemia risk. Beyond the number: blood pressure, lipids, and yearly eye, kidney and foot checks matter just as much."
+  },
+  {
+   "title_ar": "عقد الغدة الدرقية: هل هي خطيرة؟",
+   "title_en": "Thyroid nodules: are they dangerous?",
+   "text_ar": "الغالبية العظمى من العقد حميدة. التقييم يبدأ بتحليل TSH والموجات الصوتية، وتُحدد الحاجة إلى أخذ عينة بالإبرة حسب شكل العقدة وحجمها. كثير من الحالات يحتاج متابعة دورية فقط.",
+   "text_en": "The great majority of nodules are benign. Assessment starts with TSH and ultrasound, and fine-needle aspiration is decided by the nodule's features and size. Many cases need periodic follow-up only."
+  },
+  {
+   "title_ar": "مقاومة الإنسولين والوزن",
+   "title_en": "Insulin resistance and weight",
+   "text_ar": "تظهر مقاومة الإنسولين غالبًا مع دهون البطن، وتعتم الجلد في الرقبة، وارتفاع السكر أو الدهون الثلاثية. إنقاص 5–10% من الوزن، والنشاط البدني المنتظم، وتنظيم الغذاء تحسّن الحالة بوضوح، وقد يُضاف دواء بعد التقييم.",
+   "text_en": "Insulin resistance often shows as abdominal fat, darkened neck skin, and raised glucose or triglycerides. Losing 5–10% of body weight, regular activity and structured eating improve it clearly; medication may be added after assessment."
+  }
+ ]
+}

@@ -128,5 +128,5 @@ function R(d){
 d.news.forEach(function(p){var a=document.createElement('article');a.className='nw';var m=document.createElement('time');m.append(B('span',p.date_ar,p.date_en));var c=document.createElement('div'),h=document.createElement('h3');h.append(B('span',p.title_ar,p.title_en));c.append(h,T(p));a.append(m,c);document.getElementById('news').append(a)});
 d.articles.forEach(function(p){var x=document.createElement('details'),s=document.createElement('summary');s.append(B('span',p.title_ar,p.title_en));x.append(s,T(p));document.getElementById('arts').append(x)})}
 var S=JSON.parse(document.getElementById('seed').textContent);
-fetch('posts.json?'+Date.now()).then(function(r){if(!r.ok)throw 0;return r.json()}).then(R).catch(function(){R(S)});
+R(S);
 </script><script>if(!/Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent)){document.getElementById("cb").href="#c"}</script></body></html>

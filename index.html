@@ -42,6 +42,7 @@ button.nw:hover h3,button.ar2:hover{color:var(--gold)}.more{color:var(--gold);fo
 dialog#md{width:calc(100% - 32px);max-width:720px;max-height:86vh;overflow:auto;background:var(--card);color:var(--ink);border:1px solid var(--gold);border-radius:6px;padding:20px 26px 26px}dialog#md::backdrop{background:rgba(0,0,0,.55)}
 #mx{display:block;margin-inline-start:auto;font-size:18px;padding:2px 12px}#mb h2{font-size:32px;margin:6px 0 14px}#mb time{color:var(--gold);font:700 18px Amiri,serif}#mb p{margin:0 0 12px}
 button.va{margin-top:18px;padding:8px 22px}button.bk{margin-bottom:10px}
+.pv{display:inline-block;border:1px solid var(--gold);border-radius:20px;padding:3px 16px;margin-top:12px;color:var(--ink)}.pv[hidden]{display:none}
 </style></head><body>
 <header><div class="w"><nav><a href="#s"><span lang="ar">الخدمات</span><span lang="en">Services</span></a><a href="#n"><span lang="ar">الأخبار</span><span lang="en">News</span></a><a href="#a"><span lang="ar">مقالات طبية</span><span lang="en">Articles</span></a><a href="#c"><span lang="ar">احجز</span><span lang="en">Book</span></a></nav><button id="L" aria-label="Language">English</button></div></header>
 <main class="w">
@@ -65,7 +66,7 @@ button.va{margin-top:18px;padding:8px 22px}button.bk{margin-bottom:10px}
 <a class="n" href="tel:+20473234999">047 3234999</a><a class="n" href="tel:+201123944884">011 23944884</a><a class="n" href="tel:+201010498414">010 10498414</a>
 <div class="note"><span lang="ar">الإعادة خلال شهر</span><span lang="en">Follow-up visit within one month</span></div></div>
 <div><h3><span lang="ar">العنوان</span><span lang="en">Address</span></h3><p><span lang="ar">كفر الشيخ – برج الأطباء – أمام باب زيارة مركز الكبد</span><span lang="en">Doctors' Tower, in front of the Liver Center visitors' gate, Kafr El Sheikh</span></p></div></div></section>
-</main><footer><div class="w">© <span lang="ar">د. محمود يونس</span><span lang="en">Dr. Mahmoud Younis</span></div></footer>
+</main><footer><div class="w">© <span lang="ar">د. محمود يونس</span><span lang="en">Dr. Mahmoud Younis</span></div><div class="w"><div id="pv" class="pv" hidden><span lang="ar">عدد الزيارات:</span><span lang="en">Page views:</span> <b id="pvn"></b></div></div></footer>
 <script>var h=document.documentElement,b=document.getElementById('L');b.onclick=function(){var e=h.lang=='ar';h.lang=e?'en':'ar';h.dir=e?'ltr':'rtl';b.textContent=e?'العربية':'English'}</script>
 <script type="application/json" id="seed">{
  "news": [
@@ -150,4 +151,4 @@ function V(k,id){var v=document.createElement('button');v.className='btn va';v.a
 function R(d){D=d;d.news.slice(0,2).forEach(function(p){document.getElementById('news').append(N(p))});V('news','news');d.articles.slice(0,3).forEach(function(p){document.getElementById('arts').append(A(p))});V('articles','arts')}
 var S=JSON.parse(document.getElementById('seed').textContent);
 R(S);
-</script><script>if(!/Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent)){document.getElementById("cb").href="#c"}</script></body></html>
+</script><script>if(!/Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent)){document.getElementById("cb").href="#c"}</script><script>var GC='drmahmoudyounis';if(GC){var gs=document.createElement('script');gs.async=1;gs.dataset.goatcounter='https://'+GC+'.goatcounter.com/count';gs.src='https://gc.zgo.at/count.js';document.head.append(gs);setTimeout(function(){fetch('https://'+GC+'.goatcounter.com/counter/TOTAL.json').then(function(r){return r.json()}).then(function(j){document.getElementById('pvn').textContent=j.count;document.getElementById('pv').hidden=false}).catch(function(){})},1500)}</script></body></html>

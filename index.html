@@ -36,6 +36,12 @@ html[lang=en] body{font-family:Cairo,sans-serif}
 details{border-bottom:1px solid var(--line);padding:14px 0}summary{cursor:pointer;font:700 24px Amiri,serif;list-style-position:inside}summary:hover{color:var(--gold)}details>div{color:var(--mut);padding:8px 0 4px;max-width:46em}.dis{font-size:14px;color:var(--mut);margin-top:16px}
 .nw{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--line)}.nw time{color:var(--gold);font:700 18px Amiri,serif}.nw h3{font-size:24px}.nw p{margin:4px 0 0;color:var(--mut)}@media(max-width:720px){.nw{grid-template-columns:1fr;gap:4px}}
 .cert{display:block;width:100%;max-width:440px;margin-top:12px;border:1px solid var(--line)}
+button.nw,button.ar2{background:none;border:0;border-bottom:1px solid var(--line);font:inherit;color:inherit;text-align:start;width:100%;cursor:pointer;border-radius:0}
+button.ar2{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;font:700 24px Amiri,serif}
+button.nw:hover h3,button.ar2:hover{color:var(--gold)}.more{color:var(--gold);font:600 15px Cairo,sans-serif;display:block;margin-top:4px;white-space:nowrap}button.ar2 .more{margin:0}
+dialog#md{width:calc(100% - 32px);max-width:720px;max-height:86vh;overflow:auto;background:var(--card);color:var(--ink);border:1px solid var(--gold);border-radius:6px;padding:20px 26px 26px}dialog#md::backdrop{background:rgba(0,0,0,.55)}
+#mx{display:block;margin-inline-start:auto;font-size:18px;padding:2px 12px}#mb h2{font-size:32px;margin:6px 0 14px}#mb time{color:var(--gold);font:700 18px Amiri,serif}#mb p{margin:0 0 12px}
+button.va{margin-top:18px;padding:8px 22px}button.bk{margin-bottom:10px}
 </style></head><body>
 <header><div class="w"><nav><a href="#s"><span lang="ar">الخدمات</span><span lang="en">Services</span></a><a href="#n"><span lang="ar">الأخبار</span><span lang="en">News</span></a><a href="#a"><span lang="ar">مقالات طبية</span><span lang="en">Articles</span></a><a href="#c"><span lang="ar">احجز</span><span lang="en">Book</span></a></nav><button id="L" aria-label="Language">English</button></div></header>
 <main class="w">
@@ -132,9 +138,16 @@ details{border-bottom:1px solid var(--line);padding:14px 0}summary{cursor:pointe
 var E=function(t,l,x){var e=document.createElement(t);if(l)e.lang=l;e.textContent=x;return e};
 function B(t,a,b){var f=document.createDocumentFragment();f.append(E(t,'ar',a),E(t,'en',b));return f}
 function T(p){var f=document.createDocumentFragment();['ar','en'].forEach(function(l){var d=document.createElement('div');d.lang=l;(p['text_'+l]||'').split(/\n+/).forEach(function(s){if(s.trim())d.append(E('p',0,s))});f.append(d)});return f}
-function R(d){
-d.news.forEach(function(p){var a=document.createElement('article');a.className='nw';var m=document.createElement('time');m.append(B('span',p.date_ar,p.date_en));var c=document.createElement('div'),h=document.createElement('h3');h.append(B('span',p.title_ar,p.title_en));c.append(h,T(p));if(p.img){var im=document.createElement('img');im.src=p.img;im.alt=p.title_en;im.className='cert';c.append(im)}a.append(m,c);document.getElementById('news').append(a)});
-d.articles.forEach(function(p){var x=document.createElement('details'),s=document.createElement('summary');s.append(B('span',p.title_ar,p.title_en));x.append(s,T(p));document.getElementById('arts').append(x)})}
+function X(p,l){var s=(p['text_'+l]||'').split(/\n+/)[0];return s.length>150?s.slice(0,150).replace(/\s+\S*$/,'')+'…':s}
+var dg=document.createElement('dialog');dg.id='md';dg.innerHTML='<button id="mx" aria-label="Close">✕</button><div id="mb"></div>';document.body.append(dg);
+document.getElementById('mx').onclick=function(){dg.close()};dg.onclick=function(e){if(e.target==dg)dg.close()};
+var D={news:[],articles:[]};
+function N(p){var c=document.createElement('button');c.className='nw';var m=document.createElement('time');m.append(B('span',p.date_ar,p.date_en));var x=document.createElement('div'),h=document.createElement('h3');h.append(B('span',p.title_ar,p.title_en));var q=document.createElement('p');q.append(E('span','ar',X(p,'ar')),E('span','en',X(p,'en')));var mo=document.createElement('span');mo.className='more';mo.append(B('span','اقرأ المزيد','Read more'));x.append(h,q,mo);c.append(m,x);c.onclick=function(){O(p,'news')};return c}
+function A(p){var c=document.createElement('button');c.className='ar2';var s=document.createElement('span');s.append(B('span',p.title_ar,p.title_en));var mo=document.createElement('span');mo.className='more';mo.append(B('span','اقرأ','Read'));c.append(s,mo);c.onclick=function(){O(p,'articles')};return c}
+function O(p,k){var b=document.getElementById('mb');b.textContent='';var bk=document.createElement('button');bk.className='bk';bk.append(B('span','← كل '+(k=='news'?'الأخبار':'المقالات'),'← All '+(k=='news'?'news':'articles')));bk.onclick=function(){L(k)};b.append(bk);if(k=='news'){var m=document.createElement('time');m.append(B('span',p.date_ar,p.date_en));b.append(m)}var h=document.createElement('h2');h.append(B('span',p.title_ar,p.title_en));b.append(h,T(p));if(p.img){var im=document.createElement('img');im.src=p.img;im.alt=p.title_en;im.className='cert';b.append(im)}if(!dg.open)dg.showModal();dg.scrollTop=0}
+function L(k){var b=document.getElementById('mb');b.textContent='';var h=document.createElement('h2');h.append(k=='news'?B('span','كل الأخبار','All news'):B('span','كل المقالات الطبية','All medical articles'));b.append(h);D[k].forEach(function(p){b.append(k=='news'?N(p):A(p))});if(!dg.open)dg.showModal();dg.scrollTop=0}
+function V(k,id){var v=document.createElement('button');v.className='btn va';v.append(k=='news'?B('span','كل الأخبار ('+D[k].length+')','All news ('+D[k].length+')'):B('span','كل المقالات ('+D[k].length+')','All articles ('+D[k].length+')'));v.onclick=function(){L(k)};document.getElementById(id).append(v)}
+function R(d){D=d;d.news.slice(0,2).forEach(function(p){document.getElementById('news').append(N(p))});V('news','news');d.articles.slice(0,3).forEach(function(p){document.getElementById('arts').append(A(p))});V('articles','arts')}
 var S=JSON.parse(document.getElementById('seed').textContent);
 R(S);
 </script><script>if(!/Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent)){document.getElementById("cb").href="#c"}</script></body></html>

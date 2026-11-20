@@ -1,45 +1,35 @@
-# Upload instructions — rumination syndrome article
+# Upload Instructions — Videos Section: Show 3 Videos + "Open All Videos" Button
 
-## What is in this package
+## What changed
 
-| File | Purpose |
-|---|---|
-| `rumination-syndrome-when-food-comes-back-without-vomiting.html` | The NEW bilingual article page (Arabic default + English toggle, site template, JSON-LD, booking CTA, "more articles" links) |
-| `index.html` | Homepage — a new entry added FIRST in the articles data (it becomes the top card of the "مقالات طبية Medical articles" section, and opens in the popup with the full article text) |
-| `articles.html` | Articles index — the new article added as the first item in the list |
-| `sitemap.xml` | New article URL added + lastmod dates for the homepage and articles index bumped to 2026-11-20 |
+Only **one file** was modified: `index.html`
 
-Upload **all four files together** so the links stay consistent.
+The videos section (فيديوهات) previously showed all 9 videos at once. Now:
 
-## Option A — Upload via the GitHub website (the way the site has been updated until now)
+- Only the **first 3 videos** are visible when the page loads
+  1. أحسن قاعدة للنظام الغذائي — The best diet rule
+  2. ترتيب الأكل: هل يفرق في سكر الدم؟ — Food order
+  3. ليه بعض الناس مابتخسّش بحقن التخسيس؟ — Weight-loss injections & genes
+- Below them there is a centered button box:
+  - Arabic: «عرض جميع الفيديوهات (9)»
+  - English: "Open all videos (9)"
+- Clicking it reveals all 9 videos, and the button becomes «إظهار أقل» / "Show fewer videos"
+- Clicking again collapses back to 3 videos and **automatically pauses** any video that is still playing in the hidden cards (so audio never keeps playing from a hidden video)
+- Works in both Arabic and English modes, on desktop and mobile
 
-1. Download the 4 files from this chat (`article-site-update` folder, or the single zip).
-2. Go to <https://github.com/dr-mahmoud-younis/dr-mahmoud-younis.github.io>
-3. Click **Add file → Upload files**.
-4. Drag all 4 files in. GitHub will say 3 of them already exist and will be replaced — that is correct.
-5. Click **Commit changes** (message can be anything, e.g. "Add rumination syndrome article").
-6. Wait 1–2 minutes for GitHub Pages to rebuild, then check:
-   - <https://dr-mahmoud-younis.github.io/rumination-syndrome-when-food-comes-back-without-vomiting.html>
-   - The homepage articles section (new card at the top)
-   - <https://dr-mahmoud-younis.github.io/articles.html> (new first item)
+## How to upload (GitHub web interface)
 
-## Option B — Push with git from your computer
+1. Go to https://github.com/dr-mahmoud-younis/dr-mahmoud-younis.github.io
+2. Click **Add file → Upload files**
+3. Drag & drop the `index.html` file from this folder
+4. Commit message (optional): `Videos section: show 3 videos with "Open all videos" button`
+5. Click **Commit changes**
 
-```bash
-git clone https://github.com/dr-mahmoud-younis/dr-mahmoud-younis.github.io.git
-cd dr-mahmoud-younis.github.io
-# copy the 4 files from the article-site-update folder into this directory (replacing the 3 existing ones)
-git add rumination-syndrome-when-food-comes-back-without-vomiting.html index.html articles.html sitemap.xml
-git commit -m "Add rumination syndrome article"
-git push
-```
+## Verify after upload (wait ~1 minute, then hard-refresh with Ctrl+F5)
 
-## Article details
+- Open https://dr-mahmoud-younis.github.io/
+- The videos section shows exactly 3 videos with the button «عرض جميع الفيديوهات (9)» below them
+- Click the button: all 9 videos appear; the button becomes «إظهار أقل»
+- Switch to English: button reads "Open all videos (9)" → "Show fewer videos"
 
-- **Arabic title:** متلازمة الاجترار: حين يعود الطعام إلى الفم من دون قيء
-- **English title:** Rumination syndrome: when food comes back without vomiting
-- **Length:** ~1,520 Arabic words + ~1,650 English words (10 sections each, incl. FAQ)
-- **Angle:** general patient education + a dedicated section on rumination with diabetes, diabetic gastroparesis, GLP-1 (semaglutide-type) injections and post-bariatric surgery
-- **Sections (both languages):** what it looks like / how it differs from vomiting, GERD, gastroparesis, achalasia, bulimia / the mechanism (learned abdominal-wall reflex) / who gets it / complications (dental erosion, weight loss, oesophagitis, social impact) / diagnosis + Rome IV criteria / treatment — diaphragmatic breathing step-by-step, habit reversal, baclofen, infant care / diabetes & weight-loss overlap / red flags / FAQ / summary + disclaimer
-- **Facts checked against:** Rome Foundation Rome IV criteria, Murray et al. 2019 critical review (Am J Gastroenterol), Halland 2018 and Sasegbon 2022 reviews, Johns Hopkins patient page, StatPearls rumination disorder
-- **Filename note:** the filename is the automatic slug of the English title (same rule the homepage popup uses to build the "Open as standalone page" link), so the homepage button links correctly
+No other files need to be uploaded. The video files themselves are unchanged.
